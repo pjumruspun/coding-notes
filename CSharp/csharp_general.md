@@ -1,10 +1,8 @@
-# Coding Convention and Style
-
-## Auto Property
+# Auto Property
 - Easy to use
 - Provide OOP encapsulation without much hassle like in Java
 
-### Example
+## Example
   
 ```
 public class Player 
@@ -49,21 +47,21 @@ public class SomeOtherClass
 
 ---
 
-## Magic Numbers are illegal
+# Magic Numbers are illegal
 
-### Q: What are magic numbers?
-### A: A number that appears from nowhere in the code
+## Q: What are magic numbers?
+## A: A number that appears from nowhere in the code
 ```
 if(x <= 0.6f) {...}
 ```
 
-### What's the problem? It looks pretty fine!
+## What's the problem? It looks pretty fine!
 - Low readability, other people won't know what does the number mean
 - May leads into inconsistency throughout the code as typos could happen
 - It's possible that you have to edit numbers so many places
 - Not just for numbers to be honest, but applies to any data type
 
-### Instead, just do this really!
+## Instead, just do this really!
 
 ```
 const float thresholdToDestroy = 0.6f;
@@ -73,82 +71,45 @@ const float thresholdToDestroy = 0.6f;
 if(x <= thresholdToDestroy){...}
 ```
 
-## Null Coalescing Operators
+# Null Coalescing Operators
+https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/null-coalescing-operator
 
+# Linq
 Use Linq, but beware of GC, don’t use it in Update()
-	
+
+```
 arr[arr.Count - 1];
 arr.Last();
+```
 
-	Lambda expression (only use it in obvious functions)
+# Lambda expression 
+only use it in obvious functions
 
+```
 public void ClearMiddleText() => middleScreenText.text = "";
+```
 
-Animator
-	
-StringToHash()
+# Constructor
 
-		To identify animator parameters, always use Animator.StringToHash() method and make it as a constant somewhere the reasons are that it’s more efficient and prevent errors from typo
+## Chained Constructors
+https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/using-constructors
 
-private static readonly param1 = Animator.StringToHash(“param1”);
-…
-animator.SetTrigger(param1);
+## Avoid calling instance methods in constructors
+https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/constructor?redirectedfrom=MSDN
 
-
-Abstraction
+# Abstraction
 	
 Try to use Interface if it can be adaptable. For example, use IEnumerable instead of List<T> so that we can use any class extended from more general type like Queue<T>
 
 Another perk is that we can create mock of interface for testing
 
-Time
-	Separate the usage of time, unscaled time, and fixed time
-time : for game logic
-Unscaled time: for time that has to concern outside game logic as well
-Fixed time: physics
-
-Floating point comparing
+# Floating point comparing
 	
 	Even though the == comparison almost never really happens, we still should compare >= or <= in the code if it associates with the logic well, reason? To prevent confusing when working in team
 
 public static bool ReadyToDisplayAds => durationSinceLastShowAds >= calculatedTimeToShowAds;
 
 Technically operator > should suffice but it may confuse other programmers
-
-# Optimization
-## Condition evaluation
-`if` always evaluate from left to right, so always try to put lighter weight condition on the left side first as there may be a chance of not having to check the condition on the rights at all
-
-
-
-# Attribute
-## UnityEngine Attributes
-### Range
-[Range(0.0f, 1.0f)]
-private float volume = 1;
-
-### SerializeField
-
-Note: Use default value to silence CS0649 warning
-
-## UnityEditor Attributes
-// TODO
-
-# Out parameters
-
-## TryParse
-
-## TryGetValue
-if(soundCache.TryGetValue(name, out Sound sound))
-{
-sound.Source.Play();
-}
-else
-{
-Debug.LogAssertion("[ERROR] AudioManager.Play: soundCache missed");
-}
-
-## Discards (out _)
 
 # Extension Methods
 ## KeyValuePairExtension
@@ -183,7 +144,4 @@ private Dictionary<int, Sound.SoundName> stateToSound = new Dictionary<int, Soun
 
 # Class vs Struct
 
-Testing
-	All test should be meaningful by itself and should not test more than one scenario or case, and it should not need to have the programmer to try to trace the error stack
-	If the error occurred, the programmer should immediately know what kind of error has happened
-	
+# Array of Array vs Multidimensional Array
