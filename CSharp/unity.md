@@ -30,8 +30,8 @@ Fixed time: physics
 private float volume = 1;
 
 ### SerializeField
-
 Note: Use default value to silence CS0649 warning
+Tips: Use with lambda expression property
 
 ## UnityEditor Attributes
 // TODO

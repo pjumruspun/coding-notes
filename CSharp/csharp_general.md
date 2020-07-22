@@ -1,4 +1,6 @@
-# Auto Property
+# Auto-Implemented Property
+Reference: https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/auto-implemented-properties
+## Perks
 - Easy to use
 - Provide OOP encapsulation without much hassle like in Java
 
@@ -53,6 +55,7 @@ public class SomeOtherClass
 ## A: A number that appears from nowhere in the code
 ```
 if(x <= 0.6f) {...}
+//      ^ like this 0.6f here 
 ```
 
 ## What's the problem? It looks pretty fine!
@@ -71,8 +74,12 @@ const float thresholdToDestroy = 0.6f;
 if(x <= thresholdToDestroy){...}
 ```
 
+---
+
 # Null Coalescing Operators
 https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/null-coalescing-operator
+
+---
 
 # Linq
 Use Linq, but beware of GC, don’t use it in Update()
@@ -81,6 +88,8 @@ Use Linq, but beware of GC, don’t use it in Update()
 arr[arr.Count - 1];
 arr.Last();
 ```
+
+---
 
 # Lambda expression 
 only use it in obvious functions
@@ -143,5 +152,6 @@ private Dictionary<int, Sound.SoundName> stateToSound = new Dictionary<int, Soun
         };
 
 # Class vs Struct
+Struct Reference: https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/struct
 
 # Array of Array vs Multidimensional Array
