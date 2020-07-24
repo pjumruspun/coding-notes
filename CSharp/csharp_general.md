@@ -35,7 +35,7 @@ Fields:
 
 ---
 
-### 1.0.1. **If you're a Java person you would write this:**
+### **If you're a Java person you would write this:**
 
 ```C#
 public class Dragon
@@ -67,6 +67,8 @@ public class Dragon
 }
 ```
 
+#### Usage
+
 ```C#
 Dragon dragon = new Dragon("Deathbringer", 13);
 string name = dragon.GetName();
@@ -74,7 +76,7 @@ int age = dragon.GetAge()
 dragon.SetAge(14);
 ```
 
-### 1.0.2. **With C# Properties we can save lines of code and use this instead**
+### **With C# Properties we can save lines of code and use this instead**
 
 ```C#
 public class Dragon
@@ -83,6 +85,23 @@ public class Dragon
     public int Age { get; set; }
 }
 ```
+
+### **In C# 6.0 or later, you can use expression body definition to define readonly property.**
+
+#### ** This is extremely useful when using with Unity's SerializeField **
+
+```C#
+public class Dragon
+{
+    public string Name => name;
+    public int Age { get; set; }
+
+    [SerializeField]
+    private string name;
+}
+```
+
+#### Usage
 
 ```C#
 Dragon dragon = new Dragon("Deathbringer", 13);
@@ -100,11 +119,30 @@ dragon.Age = 14; // Calls as if it's a public field
 
 # 2. Lambda expression
 
-Only use it in obvious functions
+Reference: https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/statements-expressions-operators/lambda-expressions
+
+---
+
+Use it with method
 
 ```C#
-public void ClearMiddleText() => middleScreenText.text = "";
+// Normal declaration
+private void IncreaseAge(int age)
+{
+    this.age += age;
+}
+
+// Lambda-style declaration
+private void IncreaseAge(int age) => this.age += age;
 ```
+
+Use it to declare an embedded function
+
+```C#
+// TODO
+```
+
+---
 
 # 3. ?-Involved Operators
 
