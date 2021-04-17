@@ -1,8 +1,8 @@
-# Observer Pattern (Events)
+# Delegates and events
 
 Personally, I find that a class that manages all the events is really useful to control events that needs to be executed in multiple classes. For example, when a player jump, the movement script `PlayerMovement` should handle the position and speed in y-axis of the player, while the animation script `PlayerAnimation` should play the jumping animation.
 
-## Without Observer Pattern:
+## Without delegates and events:
 
 ```C#
 public class PlayerAnimation : MonoBehaviour
@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
 }
 ```
 
-Not only the code is longer, but it also decreases the cohesion of the code. Additionally, if we failed to `GetComponent<PlayerAnimation>()` this might also result in the confusing `NullReferenceException`. But with the Observer design pattern, this are all solved very easily, and the code is much cleaner too!
+Not only the code is longer, but it also decreases the cohesion of the code. Additionally, if we failed to `GetComponent<PlayerAnimation>()` this might also result in the confusing `NullReferenceException`. But with the delegates and events design, this are all solved very easily, and the code is much cleaner too!
 
 We just need to have one more class `EventPublisher` (I name it myself) to handle this stuff. And of course, if we need other scripts to handle something when the player jumps, this method is very highly scalable as well!
 
